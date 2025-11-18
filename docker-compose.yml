@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  todo-backend:
+    build: .
+    ports:
+      - "5001:5000"
+    depends_on:
+      - postgres
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=todoapp
+      - DB_USER=postgres
+      - DB_PASSWORD=Abcd1234@
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Abcd1234@
+      POSTGRES_DB: todoapp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+volumes:
+  postgres_data:
