@@ -28,8 +28,3 @@ jobs:
           context: .
           push: true
           tags: hieutong/todo-backend:latest
-
-      - name: Deploy to Kubernetes
-        run: |
-          kubectl apply -f todo-app-deployment.yaml
-          kubectl apply -f todo-app-service.yaml
